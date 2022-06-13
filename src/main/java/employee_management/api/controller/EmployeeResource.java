@@ -23,7 +23,7 @@ public class EmployeeResource {
         return new ResponseEntity<>(employees, HttpStatus.OK);
     }
 
-    @GetMapping("/find/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Employee> getEmployeeById(@PathVariable("id") Long id) {
         Employee employee = (Employee) employeeService.findEmployeeById(id);
         return new ResponseEntity<>(employee, HttpStatus.OK);
@@ -37,8 +37,8 @@ public class EmployeeResource {
 
     @PutMapping()
     public ResponseEntity<Employee> updateEmployee(@RequestBody Employee employee) {
-        Employee newEmployee = employeeService.addEmployee(employee);
-        return new ResponseEntity<>(newEmployee, HttpStatus.CREATED);
+        Employee newEmployee = employeeService.updateEmployee(employee);
+        return new ResponseEntity<>(newEmployee, HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
